@@ -107,6 +107,8 @@ const parseMatrixData = (text: string) => {
     const rowHex = parts[i];       // 例如 "00"
     const rawData = parts[i + 1];  // 例如 " 0000\n[06:31:12]0000 "
 
+    if (typeof rowHex !== 'string' || typeof rawData !== 'string') continue;
+
     const rowIdx = parseInt(rowHex, 16);
 
     // 關鍵修正：把 rawData 裡面所有不是 0 或 1 的字元全部刪掉 (包含換行、空白、時間戳)
